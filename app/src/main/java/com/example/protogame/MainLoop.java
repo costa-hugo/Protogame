@@ -58,11 +58,10 @@ public class MainLoop {
              //get the current cp from the cp list
             if (newx == currentCpXY[0] && newy == currentCpXY[1]) { //check if we are on the cp
                 map.advanceCp();
-
             }
 
             //When everything is processed, move the player
-            //TODO HERE
+            map.mvPly(newx, newy);
         }
 
 

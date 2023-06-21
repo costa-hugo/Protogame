@@ -15,6 +15,7 @@ public class Map {
     public static final char wall_ico = 'x';
     public static final char cp_ico = '*';
     public static final char exit_ico = 'x';
+    public static final char blank = ' ';
 
     public Map(int width, int height, Player ply) {
         maxmapx = width;
@@ -53,6 +54,15 @@ public class Map {
         //add the new cp
         maparr[cpList[currCp][0]][cpList[currCp][1]] = cp_ico; //allow me to explain -> we take the element at position x = current checkpoint x and position Y = current checkpoint y then replace that with cp_ico
         //the old cp_ico will get deleted by the ply_ico since the function must only be called when the player steps on the cp_ico
+    }
+    public void mvPly(int x, int y) {
+        /*
+        * Moves the player and changes its coordinates
+        */
+        maparr[x][y] = ply_ico;
+        maparr[ply.posx][ply.posy] = blank;
+        ply.posx = x;
+        ply.posy = y;
     }
 
     public void display_map() {
