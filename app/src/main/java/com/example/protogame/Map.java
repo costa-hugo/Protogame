@@ -12,9 +12,9 @@ public class Map {
     private int currCp;
 
     public static final char ply_ico = 'o';
-    public static final char wall = 'x';
-    public static final char cp = '*';
-    public static final char exit = 'x';
+    public static final char wall_ico = 'x';
+    public static final char cp_ico = '*';
+    public static final char exit_ico = 'x';
 
     public Map(int width, int height, Player ply) {
         maxmapx = width;
@@ -35,6 +35,24 @@ public class Map {
 
     public int getMaxmapy() {
         return maxmapy;
+    }
+
+    public int[][] getCpList() {
+        return cpList;
+    }
+
+    public int getMaxCp() {
+        return maxCp;
+    }
+
+    public int getCurrCp() {
+        return currCp;
+    }
+    public void advanceCp() {
+        currCp = currCp + 1 <= maxCp ? currCp++ : currCp;
+        //add the new cp
+        maparr[cpList[currCp][0]][cpList[currCp][1]] = cp_ico; //allow me to explain -> we take the element at position x = current checkpoint x and position Y = current checkpoint y then replace that with cp_ico
+        //the old cp_ico will get deleted by the ply_ico since the function must only be called when the player steps on the cp_ico
     }
 
     public void display_map() {
