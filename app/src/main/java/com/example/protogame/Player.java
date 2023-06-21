@@ -1,7 +1,7 @@
 package com.example.protogame;
 
 public class Player {
-    private directions dir;
+    public directions dir;
     private int movecount;
     public int posx, posy;
 
