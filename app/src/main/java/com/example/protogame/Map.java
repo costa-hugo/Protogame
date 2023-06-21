@@ -25,6 +25,14 @@ public class Map {
         }
     }
 
+    public int getMaxmapx() {
+        return maxmapx;
+    }
+
+    public int getMaxmapy() {
+        return maxmapy;
+    }
+
     public void display_map() {
         String buff = "";
         for (int y = 0; y < maxmapy; y++) {
