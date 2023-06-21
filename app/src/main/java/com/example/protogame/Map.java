@@ -7,6 +7,10 @@ public class Map {
     private int maxmapx, maxmapy;
     private Player ply;
 
+    private int[][] cpList;
+    private int maxCp;
+    private int currCp;
+
     public static final char ply_ico = 'o';
     public static final char wall = 'x';
     public static final char cp = '*';
