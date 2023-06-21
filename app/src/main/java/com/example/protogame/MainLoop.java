@@ -8,6 +8,8 @@ public class MainLoop {
     private Player ply;
     private boolean game;
 
+    private int newx, newy;
+
     MainLoop(Player ply, int mapwidth, int mapheight) {
         this.ply = ply;
         this.map = new Map(mapwidth, mapheight, ply);
@@ -21,7 +23,7 @@ public class MainLoop {
         * When called ->
         * Process new direction
         * Process movement by checking collision and moving the character
-        * if player makes sound, compute distance to wall and compute sound loudness
+        * Play sounds from nearest check point according to distance and direction
         * (print debug messages)
         * (Print debug map)
         */
@@ -39,7 +41,59 @@ public class MainLoop {
         if (newDir != directions.NO_CHANGE) {
             ply.dir = newDir;
         }
+
+        //MOVEMENT
+        //Wall collision
+        int r = 1;
+        if (movement != 0) {
+            r = checkWall(newDir, movement);
+        }
+        //Collision with cp and exit
+        //TODO HERE
+
+        //When everything is processed, move the player
+
+        //Sound
+
         // DEBUG
-        map.display_map();
+        if (debug){
+            map.display_map();
+        }
+
+    }
+    private int checkWall(directions dir, int movement) {
+        /*
+        * Computes newx and newy and then check if there is a wall at this place or if outside of array
+        * returns 0 if newx and newy can be used otherwise return 1
+        */
+
+        switch (dir) {
+            case NORTH: {
+                newx = ply.posx;
+                newy = ply.posy - movement;
+                break;
+            }
+            case SOUTH: {
+                newx = ply.posx;
+                newy = ply.posy + movement;
+                break;
+            }
+            case EAST: {
+                newx = ply.posx + movement;
+                newy = ply.posy;
+                break;
+            }
+            case WEST: {
+                newx = ply.posx - movement;
+                newy = ply.posy;
+                break;
+            }
+        } //computed new coordinates based on the movement and dir
+
+        if (newx < 0 || newy < 0 || newx > map.getMaxmapx() || newy > map.getMaxmapy()) {
+            return 1;
+        }
+
+        return 0;
     }
 }
