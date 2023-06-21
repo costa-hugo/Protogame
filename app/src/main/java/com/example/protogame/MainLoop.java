@@ -37,6 +37,8 @@ public class MainLoop {
         * Remember, map is a 2D array of char:
         * These symboles are in the map, blank spaces are considered free space*/
 
+        int[] currentCpXY = map.getCpList()[map.getCurrCp()]; //Collision with cp and exit, might be useful multiple times
+
         //Process direction
         if (newDir != directions.NO_CHANGE) {
             ply.dir = newDir;
@@ -48,10 +50,22 @@ public class MainLoop {
         if (movement != 0) {
             r = checkWall(newDir, movement);
         }
-        //Collision with cp and exit
-        //TODO HERE
 
-        //When everything is processed, move the player
+        if (r == 0) {
+            //r is 0 only and only if checkWall as returned 0 which mean newx and newy should be used, else we skip the collision check for cp and exit as newx and newy should not be used
+
+
+             //get the current cp from the cp list
+            if (newx == currentCpXY[0] && newy == currentCpXY[1]) { //check if we are on the cp
+                map.advanceCp();
+
+            }
+
+            //When everything is processed, move the player
+            //TODO HERE
+        }
+
+
 
         //Sound
 
