@@ -7,6 +7,11 @@ public class Map {
     private int maxmapx, maxmapy;
     private Player ply;
 
+    public static final char ply_ico = 'o';
+    public static final char wall = 'x';
+    public static final char cp = '*';
+    public static final char exit = 'x';
+
     public Map(int width, int height, Player ply) {
         maxmapx = width;
         maxmapy = height;
@@ -25,7 +30,7 @@ public class Map {
         for (int y = 0; y < maxmapy; y++) {
             for (int x = 0; x < maxmapx; x++) {
                 if (x == ply.posx && y == ply.posy) {
-                    buff += 'o';
+                    buff += ply_ico;
                 } else {
                     buff +=maparr[x][y];
                 }
