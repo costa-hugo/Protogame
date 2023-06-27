@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
      * Figure out a way to detect accelerometer and shake for direction and sound input
      */
 
-    public MainLoop getGame() {
+    public static MainLoop getGame() {
         return game;
     }
 }
