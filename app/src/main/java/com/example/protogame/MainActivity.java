@@ -15,7 +15,7 @@ import android.util.Log;
 
 public class MainActivity extends AppCompatActivity {
 
-    private MainLoop game;
+    private static MainLoop game;
     private SensorManager sensorManager;
     private Sensor sensor;
 
