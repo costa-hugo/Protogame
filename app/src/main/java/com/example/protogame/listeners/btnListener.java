@@ -9,15 +9,14 @@ import com.example.protogame.directions;
 public class btnListener implements View.OnClickListener {
     @Override
     public void onClick(View v) {
-        int newDir;
+        int newMov;
 
         if (v.getId() == R.id.btnFwrd) {
-            newDir = 1;
+            newMov = 1;
         } else {
-            newDir = -1;
+            newMov = -1;
         }
 
-
-        MainActivity.getGame().update(directions.NO_CHANGE, 0);
+        MainActivity.getGame().update(directions.NO_CHANGE, newMov);
     }
 }

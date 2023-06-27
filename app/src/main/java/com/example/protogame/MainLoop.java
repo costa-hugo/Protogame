@@ -40,16 +40,22 @@ public class MainLoop {
         int[] currentCpXY = map.getCpList()[map.getCurrCp()]; //Collision with cp and exit, might be useful multiple times
 
         //Process direction
+        System.out.println(newDir);
         if (newDir != directions.NO_CHANGE) {
+            System.out.println("Changing direction");
             ply.dir = newDir;
         }
-
+        System.out.println("UwU ?");
         //MOVEMENT
         //Wall collision
+        System.out.println(movement);
         int r = 1;
         if (movement != 0) {
-            r = checkWall(newDir, movement);
+            System.out.println("Checking for wall");
+            r = checkWall(ply.dir, movement);
         }
+
+        System.out.println(r);
 
         if (r == 0) {
             //r is 0 only and only if checkWall as returned 0 which mean newx and newy should be used, else we skip the collision check for cp and exit as newx and newy should not be used
@@ -63,8 +69,6 @@ public class MainLoop {
             //When everything is processed, move the player
             map.mvPly(newx, newy);
         }
-
-
 
         //Sound
 
@@ -102,8 +106,9 @@ public class MainLoop {
                 break;
             }
         } //computed new coordinates based on the movement and dir
-
-        if (newx < 0 || newy < 0 || newx > map.getMaxmapx() || newy > map.getMaxmapy()) {
+        System.out.println(newx);
+        System.out.println(newy);
+        if (newx < 0 || newy < 0 || newx >= map.getMaxmapx() || newy >= map.getMaxmapy()) {
             return 1;
         }
 

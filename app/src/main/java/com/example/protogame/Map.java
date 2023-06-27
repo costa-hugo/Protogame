@@ -28,6 +28,10 @@ public class Map {
                 maparr[x][y] = ' ';
             }
         }
+
+        currCp = 0;
+        maxCp=2;
+        cpList = new int[][]{{0, 0}, {5, 5}};
     }
 
     public int getMaxmapx() {

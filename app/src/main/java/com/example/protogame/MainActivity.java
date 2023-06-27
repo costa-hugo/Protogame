@@ -8,6 +8,8 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.protogame.listeners.btnListener;
+
 /*Prototype explaination
 * My idea is that we have buttons and sensors, whenever we change on of them we update the game with a new state.
 * Makes it easier fast and good enough for a prototype
@@ -30,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         game = new MainLoop(new Player(directions.NORTH, 2, 2), 10, 10);
+        btnListener b =new btnListener();
+        findViewById(R.id.btnFwrd).setOnClickListener(b);
+        findViewById(R.id.btnBwrd).setOnClickListener(b);
     }
 
     /**
